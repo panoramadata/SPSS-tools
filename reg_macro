@@ -1,0 +1,24 @@
+* Define the Simple Linear Regression macro.
+* You may need to change the dependent variable.
+DEFINE SLR (indvar=!CMDEND).
+   REGRESSION
+  	/DESCRIPTIVE N
+		/MISSING LISTWISE
+  /STATISTICS = COEFF
+		/DEPENDENT csiscore 
+	 /METHOD=ENTER !indvar.
+!ENDDEFINE.
+
+* Call the SLR macro .
+SLR  tp04.
+SLR  tp05.
+etc
+
+DEFINE SLR (varlist=!CMDEND)
+  !DO !var !IN (!varlist)
+REGRESSION		  /DESCRIPTIVE N		/MISSING LISTWISE
+  /STATISTICS = COEFF		/DEPENDENT B2A 	 /METHOD=ENTER !var .
+  !DOEND
+!ENDDEFINE.
+
+SLR  varlist= x1 x2 x3 x4 x5 ...
