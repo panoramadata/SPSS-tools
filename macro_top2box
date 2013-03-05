@@ -1,0 +1,12 @@
+
+* Transformation top 2 box with macros.
+DEFINE !prefix (!pos !tokens(1) / !pos !tokens(1)) !concat(!1,!2) !ENDDEFINE.
+DEFINE !top2box (varlist=!CMDEND)
+     !DO !var !IN (!varlist)
+compute !prefix top2_ !var = (!var=6 or !var=7). 
+APPLY DICTIONARY  /FROM *  /SOURCE VARIABLES=!var  /TARGET VARIABLES= !prefix top2_ !var  
+ /FILEINFO  /VARINFO FORMATS MISSING VARLABEL.
+     !DOEND
+!ENDDEFINE.
+
+!top2box varlist= var1 var2 ...
