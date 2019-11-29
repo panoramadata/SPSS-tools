@@ -1,1 +1,1 @@
-Personal collection of SPSS tools, syntax and templates.
+Personal collection of SPSS tools, macros, and templates.
